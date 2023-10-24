@@ -4,10 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/Home' element={<Home />} />
+                <Route path='/Regions' element={<Regions />} />
+                <Route path='/Countries' element={<CountriesListSearch />} />
+
+                {/*Routes to Redirect*/}
+
+                {/*<Route path='' element {<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}
+                {/*<Route path='*' element {<Home />} />*/} {/*when does not match any route*/}
+
+            </Routes>
+        </BrowserRouter>
+        
+         
   </React.StrictMode>
 );
 
