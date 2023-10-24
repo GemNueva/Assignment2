@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Link, Outlet } from "react-router-dom"; // IMPORT LINK & OUTLET
+
+
+import Regions from './components/Regions';
+import CountriesListSearch from './components/CountriesListSearch';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        
+        <div className="App Container">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container-fluid">
+                    <Link className="navbar-brand" to="/" > Single Page Web Application</Link>
+
+                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div className="navbar-nav">
+                            <Link className="link" to="/Home">Home</Link>
+                            <Link className="link" to="/Regions">Regions</Link>
+                            <Link className="link" to="/CountriesListSearch">Countries</Link>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </nav>
+           
+    
+          
+
+            <Outlet />
+
+        </div>
+
+   
+    );
 }
 
 export default App;
