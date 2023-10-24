@@ -25,8 +25,8 @@ root.render(
 
                 {/*Routes to Redirect*/}
 
-                {/*<Route path='' element {<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}
-                {/*<Route path='*' element {<Home />} />*/} {/*when does not match any route*/}
+                <Route path='' element={<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}
+                <Route path='*' element={<Home />} />*/} {/*when does not match any route*/}
 
             </Routes>
         </BrowserRouter>

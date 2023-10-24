@@ -18,9 +18,9 @@ function App() {
 
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <Link className="link" to="/Home">Home</Link>
-                            <Link className="link" to="/Regions">Regions</Link>
-                            <Link className="link" to="/CountriesListSearch">Countries</Link>
+                            <Link className="nav-link" to="/Home">Home</Link>
+                            <Link className="nav-link" to="/Regions">Regions</Link>
+                            <Link className="nav-link" to="/CountriesListSearch">Countries</Link>
 
                         </div>
                     </div>
