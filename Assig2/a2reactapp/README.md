@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Planned Routes
+<Route path='/' element {<Home />} />
+<Route path='Home' element {<Home />} />
+<Route path='Regions' element {<Regions/>} />
+<Route path='Countries' element {<CountriesListSearch />} />
+Routes to Redirect -
+
+<Route path='' element {<Home />} /> - when locally hosted/does not contain a path localhost:[port]
+<Route path='*' element {<Home />} /> - when does not match any route
+
+use card component & 
+
+Card Component
+Default Route - Regions - using Cards
+CountriesList - Using RegionId
