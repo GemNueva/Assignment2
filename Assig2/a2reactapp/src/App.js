@@ -3,7 +3,7 @@ import './App.css';
 import { Link, Outlet } from "react-router-dom"; // IMPORT LINK & OUTLET
 
 
-import Regions from './components/Regions';
+import RegionList from './components/RegionList';
 import CountriesListSearch from './components/CountriesListSearch';
 
 
@@ -19,7 +19,7 @@ function App() {
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             <Link className="nav-link" to="/Home">Home</Link>
-                            <Link className="nav-link" to="/Regions">Regions</Link>
+                            <Link className="nav-link" to="/RegionList">Region List</Link>
                             <Link className="nav-link" to="/CountriesListSearch">Countries</Link>
 
                         </div>
@@ -29,9 +29,6 @@ function App() {
                 </div>
 
             </nav>
-           
-    
-          
 
             <Outlet />
 
