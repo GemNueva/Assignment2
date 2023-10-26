@@ -6,9 +6,12 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from './components/Home.js';
-import RegionList from './components/RegionList.js';
-import CountriesListSearch from './components/CountriesListSearch.js';
+
+import Home from './routes/Home.js';
+import Region from './routes/Region.js';
+import Countries from './routes/Countries.js';
+
+
 
 
 
@@ -20,8 +23,8 @@ root.render(
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/Home' element={<Home />} />
-                <Route path='/RegionList' element={<RegionList />} />
-                <Route path='/CountriesListSearch' element={<CountriesListSearch />} />
+                <Route path='/Region' element={<Region />} />
+                <Route path='/Countries' element={<Countries />} />
 
                 {/*Routes to Redirect*/}
 
