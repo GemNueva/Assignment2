@@ -1,25 +1,27 @@
-﻿import { Link } from "react-router-dom";
+﻿import './Card.css';
+import { Link } from "react-router-dom";
+
+const Card = ({ regionId, regionName, imageUrl, countryCount }) => {
+
+    return (
+        <div className="card-body">
+
+            <img src={imageUrl} className="card-img-top" alt={"Image of" + regionName} />
+
+            <h5 className="card-title">Region Name:{regionName}</h5>
+
+            <p className="card-text"> Region Id: {regionId}</p>
+
+            <p className="card-text"> Country Count:{countryCount}</p>
+
+            <Link to={"/Countries" + regionId}> View Countries</Link>
 
 
-const Card = ({ regionId, regionName, ImageUrl }) => (
 
+        </div>
 
-	<div className="card col-4 mb-2" style={{ width: 18 + 'rem' }} >
+    );
 
-		<img src={ImageUrl} className="card-img-top" alt={"Image of" + regionName} />
-
-		<div className="card-body">
-
-			<h5 className="card-title">{regionName}</h5>
-
-			<p className="card-text">{regionId}</p>
-
-			<Link to={"/CountriesList/" + regionId} className="btn btn-primary"> View Countries</Link>
-		</div>
-
-	</div>
-
-)
-
+}
 
 export default Card;
