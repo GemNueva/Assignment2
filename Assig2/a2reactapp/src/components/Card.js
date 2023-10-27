@@ -14,14 +14,10 @@ const Card = ({ regionId, regionName, imageUrl, countryCount }) => {
 
             <p className="card-text"> Country Count:{countryCount}</p>
 
-            <Link to={"/Countries" + regionId}> View Countries</Link>
-
-
-
+            {/*to pass the regionId into the url*/}
+            <Link to={"/CountriesList/" + regionId}> View Countries</Link>
         </div>
-
     );
-
 }
 
 export default Card;
