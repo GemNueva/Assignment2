@@ -26,6 +26,8 @@ root.render(
                 <Route path='/Region' element={<Region />} />
                 <Route path='/Countries' element={<Countries />} />
 
+                <Route path='/Countries/:regionId' element={<Countries />} />
+
                 {/*Routes to Redirect*/}
 
                 <Route path='' element={<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}
