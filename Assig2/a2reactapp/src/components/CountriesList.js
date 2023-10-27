@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
-import Card from './Card';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import CountryCard from './CountryCard';
 
 
 const CountriesList = ({ }) => {
@@ -9,19 +9,22 @@ const CountriesList = ({ }) => {
     const { regionId } = useParams();  // To get the regionId form url
                                        // useParams() returns an object, in this case regionId
 
-    const [countryData, setState] = useState([]); // initialise state
+    const [data, setData] = useState({
+            theRegion: {},
+            countryList: []
+    }); // initialise state
 
     const [query, setQuery] = useState('');
 
     // Fetch the countries using the query
     useEffect(() => {
-        fetch(`http://localhost:5256/api/B_Countries/CountryList/${query}`)
+        fetch(`http://localhost:5256/api/B_Countries/CountryList/${regionId}`)
             .then(response => response.json())
-            .then(data => setState(data))
+            .then(data => setData(data))
             .catch(err => {
                 console.log(err);
             })
-    }, [query])
+    }, [regionId])
 
     function searchQuery(evt) {
         const value = document.querySelector('[name="searchText"]').value;
@@ -38,10 +41,10 @@ const CountriesList = ({ }) => {
 
     return (
         <div className="cardListSearch">
-
             <h2 className="text-center">
                 Component: In CountriesList
             </h2>
+
             <hr />
 
             <div className="row justify-content-start mb-3">
@@ -62,25 +65,26 @@ const CountriesList = ({ }) => {
             </div>
 
             {/*Displaying Region Info*/}
-            <p>Region Id: {TheRegion.regionId}</p>
-            <p>Region Name: {TheRegion.regionName}</p>
-            <p>Country Count: {TheRegion.countryCount}</p>
-            <img src={TheRegion.imageUrl} alt={TheRegion.regionName}> </img>
+            <p>Region Id: {data.theRegion.regionId}</p>
+            <p>Region Name: {data.theRegion.regionName}</p>
+            <p>Country Count: {data.theRegion.countryCount}</p>
+            <img src={data.theRegion.imageUrl} alt={data.theRegion.regionName} />
 
             <div className="card-container" style={cardContainerStyle}>
-                {countryData.map((obj) => (
-                    <Card
+                {data.countryList.map((obj) => (
+                    <CountryCard
                         key={obj.countryId}
-                        regionId={obj.countryId}
-                        regionName={obj.countryName}
+                        countryId={obj.countryId}
+                        countryName={obj.countryName}
                         imageUrl={obj.imageUrl}
-                        countryCount={obj.countryCount}
+                        cityCount={obj.cityCount}
+                        emissionDataYearRange={obj.emissionDataYearRange}
+                        temperatureDataYearRange={obj.temperatureDataYearRange }
                     />
                 ))}
             </div>
+
         </div>
     );
 }
-
-
 export default CountriesList;
