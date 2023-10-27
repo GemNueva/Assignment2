@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './routes/Home.js';
 import Region from './routes/Region.js';
 import Countries from './routes/Countries.js';
+import CountriesList from './components/CountriesList';
 
 
 
@@ -25,7 +26,7 @@ root.render(
                 <Route path='/Home' element={<Home />} />
                 <Route path='/Region' element={<Region />} />
                 <Route path='/Countries' element={<Countries />} />
-
+                <Route path='/CountriesList/:regionId' element={<CountriesList />} />
                 <Route path='/Countries/:regionId' element={<Countries />} />
 
                 {/*Routes to Redirect*/}
