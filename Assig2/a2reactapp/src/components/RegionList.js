@@ -1,10 +1,9 @@
 ﻿import { useState, useEffect } from 'react';
 import Card from './Card.js';
 
-
-//RegionList component fetches region data from an API when it's first mounted.
-//For each item in the returned data, it renders a Card component
-//The fetch only works once due to the empty array passed to useEffect.
+// RegionList component fetches region data from an API when it's first mounted.
+// For each item in the returned data, it renders a Card component
+// The fetch only works once due to the empty array passed to useEffect.
 
 const RegionList = () => {
 
@@ -27,10 +26,7 @@ const RegionList = () => {
         gap: '20px'
     }
 
-
     return (
-
-        
         <div>            
             <div className="card-container" style={cardContainerStyle}>
                 {regionData.map((obj) => (

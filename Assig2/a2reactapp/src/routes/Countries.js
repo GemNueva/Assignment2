@@ -9,7 +9,6 @@ const Countries = ({ }) => {
                 Component: CountriesList
             </h2>
             <hr />
-
             <CountriesList/>
         </div>
     );

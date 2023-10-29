@@ -9,12 +9,8 @@ const Region = () => {
                 Component: Region List
             </h2>
             <hr />
-
             <RegionList/>
         </div>
-
     );
 }
-
-
 export default Region;

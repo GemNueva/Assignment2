@@ -3,13 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import CountryCard from './CountryCard';
 
-
-
 const CountriesList = ({ }) => {
 
     const { regionId = 0} = useParams();  // To get the regionId form url - dafault is 0
                                           // useParams() returns an object, in this case regionId
-
     const [data, setData] = useState({
             theRegion: {},
             countryList: []
@@ -28,8 +25,6 @@ const CountriesList = ({ }) => {
     }, [regionId, query]) // Dependancy array: will fetch and update when these variables change
                           //  (if empty[] will only run once)
 
-
-    // Get th
     function searchQuery(evt) {
         const value = document.querySelector('[name="searchText"]').value; // Get value from searchText = search input
         //alert('value=' + value);
@@ -69,6 +64,7 @@ const CountriesList = ({ }) => {
                 </div>
 
             </div>
+
             <div style={
                 {
                 display: 'flex',
@@ -86,9 +82,7 @@ const CountriesList = ({ }) => {
                 <p>Region Id: {data.theRegion.regionId}</p>
                 <p>Region Name: {data.theRegion.regionName}</p>
                 <p>Country Count: {data.theRegion.countryCount}</p>
-
             </div>
-
             {/*List of Countries*/}
             <div className="card-container" style={cardContainerStyle}>
                 {data.countryList.map((obj) => (

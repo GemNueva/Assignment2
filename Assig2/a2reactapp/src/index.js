@@ -3,49 +3,38 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
 import Home from './routes/Home.js';
 import Region from './routes/Region.js';
 import Countries from './routes/Countries.js';
 import CountriesList from './components/CountriesList';
-
-
-
-
-
+import CountryTemperatureData from './components/CountryTemperatureData';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <App />
             <Routes>
-
                 <Route path='/' element={<Home />} />
                 <Route path='/Home' element={<Home />} />
                 <Route path='/Region' element={<Region />} />
 
-                // Need to CHANGE SINCE WE CAN ONLY GO TO 
+                {/*Countries*/}
                 <Route path='/Countries' element={<Countries />} />
-
-
                 <Route path='/Countries/:regionId' element={<Countries />} />
-
                 <Route path='/CountriesList/:regionId' element={<CountriesList />} />
 
-                
+                {/*Temperature Data*/}
+                <Route path='/CountryTemperatureData/:countryId' element={<CountryTemperatureData />} />
+
+                {/*Emission Data*/}
+
 
                 {/*Routes to Redirect*/}
-
                 <Route path='' element={<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}
                 <Route path='*' element={<Home />} />*/} {/*when does not match any route*/}
-
             </Routes>
-        </BrowserRouter>
-        
-         
+        </BrowserRouter>   
   </React.StrictMode>
 );
 
