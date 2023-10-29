@@ -10,8 +10,6 @@ const CountryTemperatureData = ({ }) => {
 
     const [countryData, setData] = useState({}); // initialise state
 
-    const [query, setQuery] = useState('');
-
     // Fetch country Data using: countryId
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/CountryTemperatureDetail/${countryId}`)
@@ -22,12 +20,6 @@ const CountryTemperatureData = ({ }) => {
             })
     }, [countryId]) // Dependancy array: will fetch and update when these variables change
                     //  (if empty[] will only run once)
-
-    const countryDetail = countryData.rawTemperatureData
-        && countryData.rawTemperatureData[0]
-        && countryData.rawTemperatureData[0].theCountryTempData
-        && countryData.rawTemperatureData[0].theCountryTempData.country;
-
 
     return (
         <div className="cardTempData">
@@ -55,15 +47,20 @@ const CountryTemperatureData = ({ }) => {
                     height: '100%'
                 }}>
 
-                <img src={countryDetail.imageUrl}
-                    alt={countryDetail.regionName}
+                <img src={countryData.imageUrl}
+                    alt={countryData.regionName}
                     style={{ width: '200px', height: 'auto' }}
                 />
 
-                <p>Region Id: {countryDetail.regionId}</p>
-                <p>Region Name: {countryDetail.regionName}</p>
-                <p>Country Count: {countryDetail.countries}</p>
-
+                {/*Display Raw Temp Data*/}
+                <h3> Raw Temperature Data: </h3>
+                {countryData.rawTemperatureData && countryData.rawTemperatureData.map((item, index) => (
+                    <div key={index}>
+                        <p>Year: {item.theCountryTempData.year}</p>
+                        <p>Unit : {item.theCountryTempData.unit}</p>
+                        <p>Change: {item.theCountryTempData.change}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );
