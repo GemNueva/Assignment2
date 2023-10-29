@@ -38,30 +38,28 @@ const CountryTemperatureData = ({ }) => {
 
             </div>
 
-            <div style={
-                {
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '100%'
-                }}>
+            {/*Table: Country Temperature Data*/}
+            <h3> Raw Temperature Data: </h3>
 
-                <img src={countryData.imageUrl}
-                    alt={countryData.regionName}
-                    style={{ width: '200px', height: 'auto' }}
-                />
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Unit</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {countryData.rawTemperatureData && countryData.rawTemperatureData.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.theCountryTempData.year}</td>
+                            <td>{item.theCountryTempData.unit}</td>
+                            <td>{item.theCountryTempData.change}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
 
-                {/*Display Raw Temp Data*/}
-                <h3> Raw Temperature Data: </h3>
-                {countryData.rawTemperatureData && countryData.rawTemperatureData.map((item, index) => (
-                    <div key={index}>
-                        <p>Year: {item.theCountryTempData.year}</p>
-                        <p>Unit : {item.theCountryTempData.unit}</p>
-                        <p>Change: {item.theCountryTempData.change}</p>
-                    </div>
-                ))}
-            </div>
         </div>
     );
 }
