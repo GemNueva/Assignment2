@@ -74,14 +74,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 <Route path='/' element {<Home />} />
 <Route path='Home' element {<Home />} />
 <Route path='Regions' element {<Regions/>} />
-<Route path='Countries' element {<CountriesListSearch />} />
+<Route path='Countries' element {<Countries />} /> - default all regions
+<Route path='Countries:regionId' element {<CountriesListSearch />} /> from regions
 Routes to Redirect -
 
 <Route path='' element {<Home />} /> - when locally hosted/does not contain a path localhost:[port]
 <Route path='*' element {<Home />} /> - when does not match any route
 
-use card component & 
+use card component & country card 
 
 Card Component
-Default Route - Regions - using Cards
+Default: Home - Regions - Countries
 CountriesList - Using RegionId
