@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CountryCard from './CountryCard';
 
 
+
 const CountriesList = ({ }) => {
 
     const { regionId } = useParams();  // To get the regionId form url
@@ -18,7 +19,7 @@ const CountriesList = ({ }) => {
 
     // Fetch the countries using the query
     useEffect(() => {
-        fetch(`http://localhost:5256/api/B_Countries/CountryList/${regionId}`)
+        fetch(`http://localhost:5256/api/B_Countries/CountryList/${regionId}/?searchText=${query}`)
             .then(response => response.json())
             .then(data => setData(data))
             .catch(err => {
@@ -60,22 +61,39 @@ const CountriesList = ({ }) => {
                 </div>
 
                 {/*To go back to Region Page*/}
-                <Link to={"/Region"}> View Regions</Link>
+                <div className="col text-right">
+                    <Link to={"/Region"} type="button" className="btn button-primary"> Go Back - View Regions</Link>
+                </div>
+
+            </div>
+            <div style={
+                {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%'  
+                }}>
+
+                <img src={data.theRegion.imageUrl}
+                     alt={data.theRegion.regionName}
+                     style={{ width: '200px', height: 'auto' }}
+                />
+
+                <p>Region Id: {data.theRegion.regionId}</p>
+                <p>Region Name: {data.theRegion.regionName}</p>
+                <p>Country Count: {data.theRegion.countryCount}</p>
 
             </div>
 
-            {/*Displaying Region Info*/}
-            <p>Region Id: {data.theRegion.regionId}</p>
-            <p>Region Name: {data.theRegion.regionName}</p>
-            <p>Country Count: {data.theRegion.countryCount}</p>
-            <img src={data.theRegion.imageUrl} alt={data.theRegion.regionName} />
-
+            {/*List of Countries*/}
             <div className="card-container" style={cardContainerStyle}>
                 {data.countryList.map((obj) => (
                     <CountryCard
                         key={obj.countryId}
                         countryId={obj.countryId}
                         countryName={obj.countryName}
+                        iso3={obj.iso3}
                         imageUrl={obj.imageUrl}
                         cityCount={obj.cityCount}
                         emissionDataYearRange={obj.emissionDataYearRange}
