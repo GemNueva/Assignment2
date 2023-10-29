@@ -22,12 +22,20 @@ root.render(
         <BrowserRouter>
             <App />
             <Routes>
+
                 <Route path='/' element={<Home />} />
                 <Route path='/Home' element={<Home />} />
                 <Route path='/Region' element={<Region />} />
+
+                // Need to CHANGE SINCE WE CAN ONLY GO TO 
                 <Route path='/Countries' element={<Countries />} />
-                <Route path='/CountriesList/:regionId' element={<CountriesList />} />
+
+
                 <Route path='/Countries/:regionId' element={<Countries />} />
+
+                <Route path='/CountriesList/:regionId' element={<CountriesList />} />
+
+                
 
                 {/*Routes to Redirect*/}
 
