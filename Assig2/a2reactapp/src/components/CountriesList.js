@@ -7,8 +7,8 @@ import CountryCard from './CountryCard';
 
 const CountriesList = ({ }) => {
 
-    const { regionId } = useParams();  // To get the regionId form url
-                                       // useParams() returns an object, in this case regionId
+    const { regionId = 0} = useParams();  // To get the regionId form url - dafault is 0
+                                          // useParams() returns an object, in this case regionId
 
     const [data, setData] = useState({
             theRegion: {},
@@ -17,20 +17,23 @@ const CountriesList = ({ }) => {
 
     const [query, setQuery] = useState('');
 
-    // Fetch the countries using the query
+    // Fetch countries using: regionId & query
     useEffect(() => {
-        fetch(`http://localhost:5256/api/B_Countries/CountryList/${regionId}/?searchText=${query}`)
+        fetch(`http://localhost:5256/api/B_Countries/CountryList/${regionId}?searchText=${query}`)
             .then(response => response.json())
             .then(data => setData(data))
             .catch(err => {
                 console.log(err);
             })
-    }, [regionId])
+    }, [regionId, query]) // Dependancy array: will fetch and update when these variables change
+                          //  (if empty[] will only run once)
 
+
+    // Get th
     function searchQuery(evt) {
-        const value = document.querySelector('[name="searchText"]').value;
-        alert('value' + value);
-        setQuery(value);
+        const value = document.querySelector('[name="searchText"]').value; // Get value from searchText = search input
+        //alert('value=' + value);
+        setQuery(value); // update the query value - which triggers useEffect()
     }
 
     const cardContainerStyle = {
