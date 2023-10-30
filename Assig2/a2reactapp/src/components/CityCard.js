@@ -1,7 +1,7 @@
 ﻿import './Card.css';
 import { Link } from 'react-router-dom';
 
-const CityCard = ({ cityID, cityName, airQualityYearRange, recordCount }) => {
+const CityCard = ({ cityID, cityName, airQualityYearRange, recordCount}) => {
 
     return (
         <div className="card-body">
@@ -14,11 +14,8 @@ const CityCard = ({ cityID, cityName, airQualityYearRange, recordCount }) => {
             <p className="card-text">Record Count:{recordCount}</p>
 
             {/*Link to CitiesList*/}
-            {recordCount ?
-                <Link to={"/CityAQD/" + cityID}> View AQD </Link>
-                : <p> No Air Quality Data</p>
-
-            }
+            
+            <Link to={"/CityAQD/" + cityID}> View AQD </Link>
 
         </div>
     );
