@@ -11,6 +11,7 @@ import CountriesList from './components/CountriesList';
 import CountryTemperatureData from './components/CountryTemperatureData';
 import CountryEmissionData from './components/CountryEmissionData';
 import CitiesList from './components/CitiesList';
+import CityAQD from './components/CityAQD';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
@@ -33,7 +34,10 @@ root.render(
                 <Route path='/CountryEmissionData/:countryId' element={<CountryEmissionData />} />
 
                 {/*Cities List*/}
-                <Route path='/CitiesList/:countryId' element={<CitiesList/>} />
+                <Route path='/CitiesList/:countryId' element={<CitiesList />} />
+
+                {/*City AQD List*/}
+                <Route path='/CityAQD/:cityId' element={<CityAQD />} />
 
                 {/*Routes to Redirect*/}
                 <Route path='' element={<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}

@@ -39,12 +39,6 @@ const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissi
 
             }
             
-                
-            
-            
-
-           
-            
         </div>
     );
 }
