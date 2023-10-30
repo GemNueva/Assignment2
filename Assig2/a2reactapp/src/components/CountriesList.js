@@ -74,14 +74,19 @@ const CountriesList = ({ }) => {
                 height: '100%'  
                 }}>
 
-                <img src={data.theRegion.imageUrl ?? "Image Url Unavailable"}
-                     alt={data.theRegion.regionName ?? "Region Not Selected"}
-                     style={{ width: '200px', height: 'auto' }}
-                />
+                <div className="d-flex flex-column align-items-center justify-content-center">
+                    <img src={data.theRegion.imageUrl ?? "No Region Selected"}
+                        alt={data.theRegion.regionName ?? "No Region Selected"}
+                        style={{ width: '400px', height: 'auto' }}
+                    />
 
-                <p>Region Id: {data.theRegion.regionId ?? "No Region Selected"}</p>
-                <p>Region Name: {data.theRegion.regionName ?? "No Region Selected"}</p>
-                <p>Country Count: {data.theRegion.countryCount ?? "No Region Selected"}</p>
+                    <p>Region Id: {data.theRegion.regionId ?? "No Region Selected"}</p>
+                    <p>Region Name: {data.theRegion.regionName ?? "No Region Selected"}</p>
+                    <p>Country Count: {data.theRegion.countryCount ?? "No Region Selected"}</p>
+
+
+                </div>
+
 
             </div>
             {/*List of Countries*/}
