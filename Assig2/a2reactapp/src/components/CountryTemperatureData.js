@@ -14,10 +14,11 @@ const CountryTemperatureData = ({ }) => {
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/CountryTemperatureDetail/${countryId}`)
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(data =>setData(data))
             .catch(err => {
                 console.log(err);
             })
+            
     }, [countryId]) // Dependancy array: will fetch and update when these variables change
                     //  (if empty[] will only run once)
 
@@ -38,8 +39,9 @@ const CountryTemperatureData = ({ }) => {
 
             </div>
 
-            {/*Table: Country Temperature Data*/}
-            <h3> Raw Temperature Data: </h3>
+            
+            {/*Table: Country Temperature Data - NEED TO DISPLAY COUNTRY NAME - MAKE ANOTHER API CALL?*/}
+            <h3> Raw Temperature Data: {countryData?.rawTemperatureData?.[0]?.theCountryTempData?.country?.countryName} </h3>
 
             <table className="table">
                 <thead>
@@ -47,6 +49,9 @@ const CountryTemperatureData = ({ }) => {
                         <th>Year</th>
                         <th>Unit</th>
                         <th>Change</th>
+                        <th>Avg</th>
+                        <th>Min</th>
+                        <th>Max</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,6 +60,9 @@ const CountryTemperatureData = ({ }) => {
                             <td>{item.theCountryTempData.year}</td>
                             <td>{item.theCountryTempData.unit}</td>
                             <td>{item.theCountryTempData.change}</td>
+                            <td>{item.regionalAvg}</td>
+                            <td>{item.regionalMin}</td>
+                            <td>{item.regionalMax}</td>
                         </tr>
                     ))}
                 </tbody>
