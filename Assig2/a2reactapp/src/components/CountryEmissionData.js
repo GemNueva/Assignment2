@@ -5,29 +5,33 @@ import { Link } from "react-router-dom";
 
 const CountryEmissionData = ({ }) => {
 
-    const { countryId } = useParams();  // To get the countryId form url - dafault is 0
-                                        // useParams() returns an object, in this case regionId
+    const { countryId } = useParams();  // To get the countryId form url 
+                                      
+    const [ceData, setData] = useState([]);
 
-    const [ceData, setData] = useState({});
+    const [query, setQuery] = useState({}); 
 
-    const [query, setQuery] = useState({}); // initialise state
-
-    // Fetch country Data using: countryId
+    // Fetch country emission data using: countryId
     useEffect(() => {
-        fetch(`http://localhost:5256/api/B_Countries/CountryEmissionData/${countryId}?searchText=${query}`)
+        fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${countryId}`)
             .then(response => response.json())
             .then(data => setData(data))
             .catch(err => {
                 console.log(err);
             })
-    }, [countryId, query])      // Dependancy array: will fetch and update when these variables change
-                                //  (if empty[] will only run once)
+    }, [countryId, query]) // updates when countryId and query changes
 
-    function searchQuery(evt) {
-        const value = document.querySelector('[name="searchText"]').value; // Get value from searchText = search input
-        //alert('value=' + value);
-        setQuery(value);            // update the query value - which triggers useEffect()
-    }
+    const [elementList, setElementList] = useState([]);
+
+    // Fetch list of emission elements
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/GetElementList`)
+            .then(response => response.json())
+            .then(data => setElementList(data))
+            .catch(err => {
+                console.log(err);
+            })
+    }, []) // renders once
 
     return (
         <div className="cardTempData">
@@ -52,26 +56,51 @@ const CountryEmissionData = ({ }) => {
             </div>
 
             {/*Table: Country Emission Data*/}
-            <h3> Country Temperature Data: </h3>
+            <h3> Country Emission Data: </h3>
 
             <table className="table">
                 <thead>
                     <tr>
                         <th>Year</th>
-                        <th>ItemName</th>
-                        <th>Value</th>
+                        <th>Element</th>
+                        <th>Total Value</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
-                    <tr>
-                        <td>{ceData.year}</td>
-                        <td>{ceData.itemName}</td>
-                        <td>{ceData.value}</td>
-                    </tr>
-                   
+                    {ceData && ceData.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.year}</td>
+                            <td>{item.element}</td>
+                            <td>{item.totalValue}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
+
+            {/*Table: Country Emission Data*/}
+            <h3> Element List </h3>
+
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Element ID</th>
+                        <th>Element</th>
+                        <th>Unit</th>
+                        <th>Image Url</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {elementList && elementList.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.elementId}</td>
+                            <td>{item.elementName}</td>
+                            <td>{item.unit}</td>
+                            <td>{item.imageUrl}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
 
         </div>
     );
