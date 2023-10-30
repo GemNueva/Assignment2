@@ -14,13 +14,13 @@ const CityAQD = () => {
     const [cityAQD, setState] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5256/api/C_Cities/GetAirQualityData/{cityID}`)
+        fetch(`http://localhost:5256/api/C_Cities/GetAirQualityData/${cityID}`)
             .then(response => response.json())
             .then(data => setState(data))
             .catch(err => {
                 console.log(err);
             })
-    }, [])
+    }, [cityID])
 
     return (
         <div>
