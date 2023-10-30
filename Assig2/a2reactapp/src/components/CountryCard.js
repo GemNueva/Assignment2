@@ -29,6 +29,17 @@ const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissi
                 <Link to={"/CountryEmissionData/" + countryId}> View Emission Data</Link>
                 : <p> No Emission Data</p>
             }
+
+            <br />
+
+            {/*Link to CitiesList*/}
+            {cityCount ?
+                <Link to={"/CitiesList/" + countryId}> View Cities List</Link>
+                : <p> No City Data</p>
+
+            }
+            
+                
             
             
 
