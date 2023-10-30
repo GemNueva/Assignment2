@@ -14,9 +14,26 @@ const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissi
             <p className="card-text"> City Count:{cityCount}</p>
             <p className="card-text"> Temperature Data Year Range:{temperatureDataYearRange}</p>
             <p className="card-text"> Emission Data Year Range:{emissionDataYearRange}</p>
-    
-            {/*to pass the countryId into the url*/}
-            <Link to={"/CountryTemperatureData/" + countryId}> View Temperature Detail</Link>
+
+
+            {/*Link to CountryTemperatureData*/}
+            {temperatureDataYearRange ?
+                <Link to={"/CountryTemperatureData/" + countryId}> View Temperature Detail</Link>
+                : <p> No Temperature Data</p>
+            }
+
+            <br />
+
+            {/*Link to CountryEmissionData*/}
+            {emissionDataYearRange ?
+                <Link to={"/CountryEmissionData/" + countryId}> View Emission Data</Link>
+                : <p> No Emission Data</p>
+            }
+            
+            
+
+           
+            
         </div>
     );
 }
