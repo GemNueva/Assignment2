@@ -37,7 +37,7 @@ root.render(
                 <Route path='/CitiesList/:countryId' element={<CitiesList />} />
 
                 {/*City AQD List*/}
-                <Route path='/CityAQD/:cityId' element={<CityAQD />} />
+                <Route path='/CityAQD/:cityID' element={<CityAQD />} />
 
                 {/*Routes to Redirect*/}
                 <Route path='' element={<Home />} />*/}  {/*when locally hosted/does not contain a path localhost:[port]*/}
