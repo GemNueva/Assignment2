@@ -34,8 +34,8 @@ const RegionList = () => {
                         key={obj.regionId}
                         regionId={obj.regionId}
                         regionName={obj.regionName}
-                        imageUrl={obj.imageUrl}
-                        countryCount={obj.countryCount}
+                        imageUrl={obj.imageUrl ?? "DefaultImageUrlHere"}
+                        countryCount={obj.countryCount ?? "Not Available"}
                     />
                 ))}
             </div>
