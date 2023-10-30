@@ -9,6 +9,7 @@ import Region from './routes/Region.js';
 import Countries from './routes/Countries.js';
 import CountriesList from './components/CountriesList';
 import CountryTemperatureData from './components/CountryTemperatureData';
+import CountryEmissionData from './components/CountryEmissionData';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
@@ -28,6 +29,7 @@ root.render(
                 <Route path='/CountryTemperatureData/:countryId' element={<CountryTemperatureData />} />
 
                 {/*Emission Data*/}
+                <Route path='/CountryEmissionData/:countryId' element={<CountryEmissionData />} />
 
 
                 {/*Routes to Redirect*/}
