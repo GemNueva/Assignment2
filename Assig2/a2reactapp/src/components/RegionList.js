@@ -11,7 +11,7 @@ const RegionList = () => {
     const [regionData, setState] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5256/api/A_Regions")
+        fetch(`http://localhost:5256/api/A_Regions`)
             .then(response => response.json())
             .then(data => setState(data))
             .catch(err => {
