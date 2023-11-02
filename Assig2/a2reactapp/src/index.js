@@ -28,10 +28,10 @@ root.render(
                 <Route path='/CountriesList/:regionId' element={<CountriesList />} />
 
                 {/*Temperature Data*/}
-                <Route path='/CountryTemperatureData/:countryId' element={<CountryTemperatureData />} />
+                <Route path='/CountryTemperatureData/:regionid/:countryId' element={<CountryTemperatureData />} />
 
                 {/*Emission Data*/}
-                <Route path='/CountryEmissionData/:countryId' element={<CountryEmissionData />} />
+                <Route path='/CountryEmissionData/:regionid/:countryId' element={<CountryEmissionData />} />
 
                 {/*Cities List*/}
                 <Route path='/CitiesList/:countryId' element={<CitiesList />} />
