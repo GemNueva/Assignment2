@@ -19,16 +19,16 @@ const RegionList = () => {
             })
     }, [])
 
-    const cardContainerStyle = {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        gap: '20px'
-    }
-
     return (
         <div>            
-            <div className="card-container" style={cardContainerStyle}>
+            <div className="card"
+                style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'space-between',
+                gap: '20px'
+                }}
+             >
                 {regionData.map((obj) => (
                     <Card
                         key={obj.regionId}
@@ -38,6 +38,7 @@ const RegionList = () => {
                         countryCount={obj.countryCount ?? "Not Available"}
                     />
                 ))}
+
             </div>
         </div>
     )
