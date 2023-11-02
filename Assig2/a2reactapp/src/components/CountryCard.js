@@ -22,15 +22,11 @@ const CountryCard = ({ regionId, countryId, countryName, imageUrl, iso3, cityCou
                 : <p> No Temperature Data</p>
             }
 
-            <br />
-
             {/*Link to CountryEmissionData*/}
             {emissionDataYearRange ?
                 <Link to={`/CountryEmissionData/${regionId}/${countryId}`}> View Emission Data</Link>
                 : <p> No Emission Data</p>
             }
-
-            <br />
 
             {/*Link to CitiesList*/}
             {cityCount ?
