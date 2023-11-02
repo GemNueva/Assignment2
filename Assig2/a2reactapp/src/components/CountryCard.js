@@ -1,7 +1,7 @@
 ﻿import './Card.css';
 import { Link } from "react-router-dom";
 
-const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissionDataYearRange, temperatureDataYearRange }) => {
+const CountryCard = ({ regionId, countryId, countryName, imageUrl, iso3, cityCount, emissionDataYearRange, temperatureDataYearRange }) => {
 
     return (
         <div className="card-body">
@@ -18,7 +18,7 @@ const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissi
 
             {/*Link to CountryTemperatureData*/}
             {temperatureDataYearRange ?
-                <Link to={"/CountryTemperatureData/" + countryId}> View Temperature Detail</Link>
+                <Link to={`/CountryTemperatureData/${regionId}/${countryId}`}> View Temperature Detail</Link>
                 : <p> No Temperature Data</p>
             }
 
@@ -26,7 +26,7 @@ const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissi
 
             {/*Link to CountryEmissionData*/}
             {emissionDataYearRange ?
-                <Link to={"/CountryEmissionData/" + countryId}> View Emission Data</Link>
+                <Link to={`/CountryEmissionData/${regionId}/${countryId}`}> View Emission Data</Link>
                 : <p> No Emission Data</p>
             }
 
@@ -34,7 +34,7 @@ const CountryCard = ({ countryId, countryName, imageUrl, iso3, cityCount, emissi
 
             {/*Link to CitiesList*/}
             {cityCount ?
-                <Link to={"/CitiesList/" + countryId}> View Cities List</Link>
+                <Link to={`/CitiesList/${regionId}/${countryId}`}> View Cities List</Link>
                 : <p> No City Data</p>
 
             }
