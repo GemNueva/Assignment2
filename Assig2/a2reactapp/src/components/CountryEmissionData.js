@@ -8,8 +8,6 @@ const CountryEmissionData = ({ }) => {
     const { regionId } = useParams(); // Get regionId from url : To display region info
     const { countryId } = useParams(); // Get countryId from url : To get country emission data
 
-        
-    // TODO - change
     const [countryEmissionData, setCountryEmissionData] = useState([]);
 
     const [query, setQuery] = useState({}); 
@@ -35,7 +33,7 @@ const CountryEmissionData = ({ }) => {
             .catch(err => {
                 console.log(err);
             })
-    }, []) // renders once
+    }, [])          // renders once
 
     return (
         <div className="cardTempData">
