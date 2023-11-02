@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const CountryTemperatureData = ({ }) => {
 
-    const { countryId } = useParams();  // To get the countryId form url - dafault is 0
+    const { regionId, countryId } = useParams();  // To get the countryId form url - dafault is 0
                                         // useParams() returns an object, in this case regionId
 
     const [countryData, setData] = useState({}); // initialise state
@@ -21,6 +21,20 @@ const CountryTemperatureData = ({ }) => {
             
     }, [countryId]) // Dependancy array: will fetch and update when these variables change
                     //  (if empty[] will only run once)
+
+    // Fetching region info
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/CountryTemperatureDetail/${countryId}`)
+            .then(response => response.json())
+            .then(data => setData(data))
+            .catch(err => {
+                console.log(err);
+            })
+
+    }, [countryId]) // Dependancy array: will fetch and update when these variables change
+                    //  (if empty[] will only run once)
+
+    
 
     return (
         <div className="cardTempData">
@@ -41,7 +55,7 @@ const CountryTemperatureData = ({ }) => {
 
             
             {/*Table: Country Temperature Data - NEED TO DISPLAY COUNTRY NAME - MAKE ANOTHER API CALL?*/}
-            <h3> Raw Temperature Data: {countryData?.rawTemperatureData?.[0]?.theCountryTempData?.country?.countryName} </h3>
+            <h3> Raw Temperature Data: { } </h3>
 
             <table className="table">
                 <thead>

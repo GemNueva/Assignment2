@@ -31,6 +31,7 @@ const CountriesList = ({ }) => {
         setQuery(value); // update the query value - which triggers useEffect()
     }
 
+    // TODO
     const cardContainerStyle = {
         display: 'flex',
         flexWrap: 'wrap',
@@ -65,6 +66,7 @@ const CountriesList = ({ }) => {
 
             </div>
 
+            {/*//TODO*/}
             <div style={
                 {
                 display: 'flex',
