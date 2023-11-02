@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 
 const CountryEmissionData = ({ }) => {
 
-    const { countryId } = useParams();  // To get the countryId form url 
-                                      
-    const [ceData, setData] = useState([]);
+    const { regionId } = useParams(); // Get regionId from url : To display region info
+    const { countryId } = useParams(); // Get countryId from url : To get country emission data
+
+        
+    // TODO - change
+    const [countryEmissionData, setCountryEmissionData] = useState([]);
 
     const [query, setQuery] = useState({}); 
 
@@ -15,14 +18,15 @@ const CountryEmissionData = ({ }) => {
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${countryId}`)
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(data => setCountryEmissionData(data))
             .catch(err => {
                 console.log(err);
             })
-    }, [countryId, query]) // updates when countryId and query changes
+    }, [countryId, query]) // Fetches when countryId and query changes
 
     const [elementList, setElementList] = useState([]);
 
+    // TODO - move to other component since we only need to render it once
     // Fetch list of emission elements
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/GetElementList`)
@@ -67,7 +71,7 @@ const CountryEmissionData = ({ }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {ceData && ceData.map((item, index) => (
+                    {countryEmissionData && countryEmissionData.map((item, index) => (
                         <tr key={index}>
                             <td>{item.year}</td>
                             <td>{item.element}</td>
