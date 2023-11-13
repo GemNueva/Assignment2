@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import CityCard from './CityCard';
+import './cardContainerStyle.css';
 
 
 const CitiesList = () => {
@@ -9,7 +10,7 @@ const CitiesList = () => {
 
     const [cityList, setState] = useState([]);
 
-    const [query, setQuery] = useState(''); //
+    const [query, setQuery] = useState(''); 
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/C_Cities/${countryId}?searchText=${query}`)
@@ -23,13 +24,6 @@ const CitiesList = () => {
     function searchQuery(evt) {
         const value = document.querySelector('[name="searchText"]').value; // Get value from searchText = search input
         setQuery(value); // update query value - which triggers useEffect()
-    }
-
-    const cardContainerStyle = {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        gap: '20px'
     }
 
     return (
@@ -53,8 +47,7 @@ const CitiesList = () => {
 
             </div>
 
-            <div className="card-container" style={cardContainerStyle}>
-                {console.log("Rendering CityCards with data:", cityList)}
+            <div style="cardContainerStyle">
                 {cityList.map((obj) => (
                     <CityCard
                         key={obj.cityID}

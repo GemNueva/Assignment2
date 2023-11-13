@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 
 const CityAQD = () => {
 
+    // get the cityId from the url
     const { cityID } = useParams(); 
 
     // initialise the state
@@ -20,7 +21,7 @@ const CityAQD = () => {
             .catch(err => {
                 console.log(err);
             })
-    }, [cityID])
+    }, [cityID]) // everytime the cityId changes - fetch again
 
     return (
         <div>
