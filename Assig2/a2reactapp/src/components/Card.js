@@ -15,7 +15,9 @@ const Card = ({ regionId, regionName, imageUrl, countryCount }) => {
             <p className="card-text"> Country Count:{countryCount}</p>
 
             {/*to pass the regionId into the url*/}
-            <Link to={"/CountriesList/" + regionId}> View Countries</Link>
+            <Link to={"/CountriesList/" + regionId} className="stretched-link"> View Countries</Link>
+
+
         </div>
     );
 }
