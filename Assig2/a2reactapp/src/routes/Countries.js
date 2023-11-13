@@ -4,11 +4,8 @@ const Countries = ({ }) => {
     return (
         <div>
             <h2 className="text-center">
-                Route: Countries
-                <br />
-                Component: CountriesList
+                Route: Countries | Component: CountriesList
             </h2>
-            <hr />
             <CountriesList/>
         </div>
     );

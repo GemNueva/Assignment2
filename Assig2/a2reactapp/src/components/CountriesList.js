@@ -36,11 +36,10 @@ const CountriesList = ({ }) => {
 
     return (
         <div className="cardListSearch">
-            <h2 className="text-center">
-                Component: In CountriesList
-            </h2>
 
-            <hr />
+            <h2 className="text-center">
+                In CountriesList:
+            </h2>
 
             <div className="row justify-content-start mb-3">
 
