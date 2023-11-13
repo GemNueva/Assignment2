@@ -2,6 +2,7 @@
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import CountryCard from './CountryCard';
+import './cardContainerStyle.css';
 
 const CountriesList = ({ }) => {
 
@@ -10,7 +11,8 @@ const CountriesList = ({ }) => {
     const [data, setData] = useState({
             theRegion: {},
             countryList: []
-    }); // initialise state
+    }); 
+
 
     const [query, setQuery] = useState('');
 
@@ -31,13 +33,6 @@ const CountriesList = ({ }) => {
         setQuery(value); // update the query value - which triggers useEffect()
     }
 
-    // TODO
-    const cardContainerStyle = {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        gap: '20px'
-    }
 
     return (
         <div className="cardListSearch">
@@ -67,24 +62,17 @@ const CountriesList = ({ }) => {
             </div>
 
             {/*//TODO*/}
-            <div style={
-                {
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%'  
-                }}>
+            <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center',justifyContent: 'center',height: '100%' }}>
 
                 <div className="d-flex flex-column align-items-center justify-content-center">
-                    <img src={data.theRegion.imageUrl ?? "No Region Selected"}
+                    <img className="text-center" src={data.theRegion.imageUrl ?? "No Region Selected"}
                         alt={data.theRegion.regionName ?? "No Region Selected"}
                         style={{ width: '400px', height: 'auto' }}
                     />
 
-                    <p>Region Id: {data.theRegion.regionId ?? "No Region Selected"}</p>
-                    <p>Region Name: {data.theRegion.regionName ?? "No Region Selected"}</p>
-                    <p>Country Count: {data.theRegion.countryCount ?? "No Region Selected"}</p>
+                    <p className="text-center">Region Id: {data.theRegion.regionId ?? "No Region Selected"}</p>
+                    <p className="text-center">Region Name: {data.theRegion.regionName ?? "No Region Selected"}</p>
+                    <p className="text-center">Country Count: {data.theRegion.countryCount ?? "No Region Selected"}</p>
 
 
                 </div>
@@ -92,7 +80,7 @@ const CountriesList = ({ }) => {
 
             </div>
             {/*List of Countries*/}
-            <div className="card-container" style={cardContainerStyle}>
+            <div className="cardContainerStyle">
                 {data.countryList.map((obj) => (
                     <CountryCard
                         key={obj.countryId}
