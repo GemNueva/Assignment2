@@ -35,6 +35,7 @@ root.render(
 
                 {/*Cities List*/}
                 <Route path='/CitiesList/:countryId' element={<CitiesList />} />
+                <Route path='/CitiesList/:regionid/:countryId' element={<CitiesList />} />
 
                 {/*City AQD List*/}
                 <Route path='/CityAQD/:cityID' element={<CityAQD />} />
