@@ -1,7 +1,7 @@
 ﻿import './Card.css';
 import { Link } from "react-router-dom";
 
-const Card = ({ regionId, regionName, imageUrl, countryCount }) => {
+const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
 
     return (
         <div className="card-body">
@@ -15,11 +15,14 @@ const Card = ({ regionId, regionName, imageUrl, countryCount }) => {
             <p className="card-text"> Country Count:{countryCount}</p>
 
             {/*to pass the regionId into the url*/}
-            <Link to={"/CountriesList/" + regionId} className="stretched-link"> View Countries</Link>
+            <Link to={`/CountriesList/${regionId}`} className="stretched-link">
 
+            </Link>
 
-        </div>
+            {/*https://getbootstrap.com/docs/4.3/utilities/stretched-link/*/}
+
+        </div> 
     );
 }
 
-export default Card;
+export default RegionCard;
