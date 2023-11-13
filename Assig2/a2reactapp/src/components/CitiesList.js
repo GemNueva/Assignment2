@@ -21,9 +21,14 @@ const CitiesList = () => {
             })
     }, [countryId, query])
 
+    /*
+        searchQuery(evt):
+        Get value from searchText = search input
+        update query value - which triggers useEffect()
+     */
     function searchQuery(evt) {
-        const value = document.querySelector('[name="searchText"]').value; // Get value from searchText = search input
-        setQuery(value); // update query value - which triggers useEffect()
+        const value = document.querySelector('[name="searchText"]').value; 
+        setQuery(value);                                                  
     }
 
     return (
@@ -42,19 +47,19 @@ const CitiesList = () => {
 
                 {/*To go back to Country List Page*/}
                 <div className="col text-right">
-                    <Link to={"/Countries"} type="button" className="btn button-primary"> Go Back - Countries List</Link>
+                    <Link to={`/Countries`} type="button" className="btn button-primary"> Go Back - Countries List</Link>
                 </div>
 
             </div>
 
-            <div style="cardContainerStyle">
+            <div className="cardContainerStyle">
                 {cityList.map((obj) => (
                     <CityCard
                         key={obj.cityID}
                         cityID={obj.cityID}
                         cityName={obj.cityName}
                         airQualityYearRange={obj.airQualityYearRange}
-                        cityCount={obj.cityCount}
+                        recordCount={obj.recordCount}
                     />
                 ))}
             </div>
