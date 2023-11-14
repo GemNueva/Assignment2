@@ -28,16 +28,16 @@ root.render(
                 <Route path='/CountriesList/:regionId' element={<CountriesList />} />
 
                 {/*Temperature Data*/}
-                <Route path='/CountryTemperatureData/:regionid/:countryId' element={<CountryTemperatureData />} />
+                <Route path='/CountryTemperatureData/:regionId/:countryId' element={<CountryTemperatureData />} />
 
                 {/*Emission Data*/}
                 <Route path='/CountryEmissionData/:regionid/:countryId' element={<CountryEmissionData />} />
 
                 {/*Cities List*/}
                 <Route path='/CitiesList/:countryId' element={<CitiesList />} />
-                <Route path='/CitiesList/:regionid/:countryId' element={<CitiesList />} />
+                <Route path='/CitiesList/:regionId/:countryId' element={<CitiesList />} />
 
-                {/*City AQD List*/}
+                {/*City AQD List*/} 
                 <Route path='/CityAQD/:cityID' element={<CityAQD />} />
 
                 {/*Routes to Redirect*/}
