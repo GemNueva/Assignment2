@@ -6,7 +6,7 @@ const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
     return (
         <div className="card-body">
 
-            <img src={imageUrl} className="card-img-top" alt={"Image of" + regionName} />
+            <img src={imageUrl} className="card-img-top" alt={`Image of: ${regionName}`} />
 
             <h5 className="card-title">Region Name:{regionName}</h5>
 
@@ -24,5 +24,4 @@ const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
         </div> 
     );
 }
-
 export default RegionCard;
