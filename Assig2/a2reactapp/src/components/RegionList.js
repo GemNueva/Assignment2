@@ -20,7 +20,9 @@ const RegionList = () => {
 
     const [regionData, setRegionData] = useState([]); // set initial state to empty array
 
-    // Fetch the data from the API
+    // Fetch the data from the API:
+    // - turn the response into a json
+    // - only renders once because of the []
     useEffect(() => {
         fetch(`http://localhost:5256/api/A_Regions`)
             .then(response => response.json())      
@@ -38,7 +40,7 @@ const RegionList = () => {
                     key={obj.regionId}
                     regionId={obj.regionId}
                     regionName={obj.regionName}
-                    imageUrl={obj.imageUrl ?? "DefaultImageUrlHere"}
+                    imageUrl={obj.imageUrl ?? "DefaultImageUrlHere"}    // if obj.imageUrl is null or undefined - Display message
                     countryCount={obj.countryCount ?? "Not Available"}
                 />
             ))}  
