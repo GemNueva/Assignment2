@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 const CountryCard = ({ regionId, countryId, countryName, imageUrl, iso3, cityCount, emissionDataYearRange, temperatureDataYearRange }) => {
 
+    //const dataToPass = { regionId, countryName, imageUrl };
+
     return (
         <div className="card-body">
 
@@ -18,14 +20,18 @@ const CountryCard = ({ regionId, countryId, countryName, imageUrl, iso3, cityCou
 
             {/*Link to CountryTemperatureData*/}
             {temperatureDataYearRange ?
-                <Link to={`/CountryTemperatureData/${regionId}/${countryId}`}> View Temperature Detail</Link>
-                : <p> No Temperature Data</p>
+                <Link to={{
+                    pathname: `/CountryTemperatureData/${regionId}/${countryId}`,
+                    state: {regionId, countryName, imageUrl}
+                }}> View Temperature Detail</Link> : <p> No Temperature Data</p>
             }
 
             {/*Link to CountryEmissionData*/}
             {emissionDataYearRange ?
-                <Link to={`/CountryEmissionData/${regionId}/${countryId}`}> View Emission Data</Link>
-                : <p> No Emission Data</p>
+                <Link to={{
+                    pathname: `/CountryEmissionData/${regionId}/${countryId}`,
+                    state: {regionId, countryName, imageUrl}
+                }} > View Emission Data</Link> : <p> No Emission Data</p>
             }
 
             {/*Link to CitiesList*/}

@@ -1,12 +1,15 @@
 ﻿import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const CountryEmissionData = ({ }) => {
 
     const { regionId } = useParams(); // Get regionId from url : To display region info
     const { countryId } = useParams(); // Get countryId from url : To get country emission data
+
+    const location = useLocation();
+    const { countryName, imageUrl } = location.state; //|| {};
 
     const [countryEmissionData, setCountryEmissionData] = useState([]);
 
@@ -24,8 +27,6 @@ const CountryEmissionData = ({ }) => {
 
     const [elementList, setElementList] = useState([]);
 
-    // TODO - move to other component since we only need to render it once
-    // Fetch list of emission elements
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/GetElementList`)
             .then(response => response.json())
@@ -33,7 +34,12 @@ const CountryEmissionData = ({ }) => {
             .catch(err => {
                 console.log(err);
             })
-    }, [])          // renders once
+    }, [])
+
+    function searchQuery(evt) {
+        const value = document.querySelector('[name="searchText"]').value;
+        setQuery(value);
+    } 
 
     return (
         <div className="cardTempData">
@@ -50,6 +56,11 @@ const CountryEmissionData = ({ }) => {
                     <input type="text" name="searchText" className="form-control" placeholder="type your query" />
                 </div>
 
+                {/*Button*/}
+                <div className="col text-left">
+                    <button type="button" className="btn button-primary" onClick={searchQuery}> Search </button>
+                </div>
+
                 {/*To go back to Countries Page*/}
                 <div className="col text-right">
                     <Link to={`/Countries/?countryId=${countryId}`} type="button" className="btn button-primary"> Go Back - View Countries</Link>
@@ -58,7 +69,10 @@ const CountryEmissionData = ({ }) => {
             </div>
 
             {/*Table: Country Emission Data*/}
-            <h3> Country Emission Data: </h3>
+            
+            <h3> Country Emission Data: {countryName} </h3>
+            <p> Region Id: {regionId}</p>
+            <img src={imageUrl}></img>
 
             <table className="table">
                 <thead>
@@ -97,7 +111,7 @@ const CountryEmissionData = ({ }) => {
                             <td>{item.elementId}</td>
                             <td>{item.elementName}</td>
                             <td>{item.unit}</td>
-                            <td>{item.imageUrl}</td>
+                            <td>{item.imageUrl ?? "N/A"}</td>
                         </tr>
                     ))}
                 </tbody>

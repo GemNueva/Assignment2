@@ -94,6 +94,7 @@ const CountriesList = ({ }) => {
                 {countryData.countryList.map((obj) => (
                     <CountryCard
                         key={obj.countryId}
+                        regionId={obj.regionId}
                         countryId={obj.countryId}
                         countryName={obj.countryName}
                         iso3={obj.iso3}
