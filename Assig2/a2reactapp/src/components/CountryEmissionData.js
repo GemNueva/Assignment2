@@ -8,8 +8,10 @@ const CountryEmissionData = ({ }) => {
     const { regionId } = useParams(); // Get regionId from url : To display region info
     const { countryId } = useParams(); // Get countryId from url : To get country emission data
 
-    const location = useLocation();
-    const { countryName, imageUrl } = location.state; //|| {};
+    //const location = useLocation(); // use data from the url
+    //const { countryName, imageUrl } = location.state;
+    // attempted to pass state data in link to get name, countryName and imageUrl
+
 
     const [countryEmissionData, setCountryEmissionData] = useState([]);
 
