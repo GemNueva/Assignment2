@@ -6,9 +6,14 @@ import './cardContainerStyle.css';
 
 const CountriesList = ({ }) => {
 
-    const { regionId = 0} = useParams();  // To get the regionId form url - dafault is 0
-                                          // useParams() returns an object, in this case regionId
-    const [data, setData] = useState({
+    /*  useParams(): returns an object, in this case regionId
+        - gets the regionId form url - dafault is 0 so that it shows all regions
+    */ 
+
+    const { regionId = 0 } = useParams();
+
+    //
+    const [countryData, setCountryData] = useState({
             theRegion: {},
             countryList: []
     }); 
@@ -16,23 +21,25 @@ const CountriesList = ({ }) => {
 
     const [query, setQuery] = useState('');
 
-    // Fetch countries using: regionId & query
+    // Fetch countries using: regionId & query:
+    // Dependancy array: will fetch and update when these variables regionId and query changes
+                       
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/CountryList/${regionId}?searchText=${query}`)
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(data => setCountryData(data))
             .catch(err => {
                 console.log(err);
             })
-    }, [regionId, query]) // Dependancy array: will fetch and update when these variables change
-                          //  (if empty[] will only run once)
+    }, [regionId, query]) 
 
+
+    // useEffect(): gets value from searchText = search input - update the query value
+    // which triggers a render to fetch again
     function searchQuery(evt) {
-        const value = document.querySelector('[name="searchText"]').value; // Get value from searchText = search input
-        //alert('value=' + value);
-        setQuery(value); // update the query value - which triggers useEffect()
+        const value = document.querySelector('[name="searchText"]').value; 
+        setQuery(value); 
     }
-
 
     return (
         <div className="cardListSearch">
@@ -64,23 +71,22 @@ const CountriesList = ({ }) => {
             <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center',justifyContent: 'center',height: '100%' }}>
 
                 <div className="d-flex flex-column align-items-center justify-content-center">
-                    <img className="text-center" src={data.theRegion.imageUrl ?? "No Region Selected"}
-                        alt={data.theRegion.regionName ?? "No Region Selected"}
+                    <img className="text-center"
+                        src={countryData.theRegion.imageUrl ?? "No Region Selected"}
+                        alt={countryData.theRegion.regionName}
                         style={{ width: '400px', height: 'auto' }}
                     />
 
-                    <p className="text-center">Region Id: {data.theRegion.regionId ?? "No Region Selected"}</p>
-                    <p className="text-center">Region Name: {data.theRegion.regionName ?? "No Region Selected"}</p>
-                    <p className="text-center">Country Count: {data.theRegion.countryCount ?? "No Region Selected"}</p>
-
+                    <p className="text-center">Region Id: {countryData.theRegion.regionId ?? "No Region Selected"}</p>
+                    <p className="text-center">Region Name: {countryData.theRegion.regionName ?? "No Region Selected"}</p>
+                    <p className="text-center">Country Count: {countryData.theRegion.countryCount ?? "No Region Selected"}</p>
 
                 </div>
-
-
             </div>
+
             {/*List of Countries*/}
             <div className="cardContainerStyle">
-                {data.countryList.map((obj) => (
+                {countryData.countryList.map((obj) => (
                     <CountryCard
                         key={obj.countryId}
                         countryId={obj.countryId}
