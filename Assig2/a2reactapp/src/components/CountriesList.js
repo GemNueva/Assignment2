@@ -12,7 +12,7 @@ const CountriesList = ({ }) => {
 
     const { regionId = 0 } = useParams();
 
-    //
+    // The Api response returns and Object and an array
     const [countryData, setCountryData] = useState({
             theRegion: {},
             countryList: []
@@ -48,26 +48,31 @@ const CountriesList = ({ }) => {
                 In CountriesList:
             </h2>
 
-            <div className="row justify-content-start mb-3">
+         
 
-                {/*Search Bar*/}
-                <div className="col-3">
-                    <input type="text" name="searchText" className="form-control" placeholder="type your query" />
+            {/* Ass Spec */}
+            {countryData.theRegion.countryCount > 1 && (
+                <div className="row justify-content-start mb-3">
+
+                    {/*Search Bar*/}
+                    <div className="col-3">
+                        <input type="text" name="searchText" className="form-control" placeholder="type your query" />
+                    </div>
+
+                    {/*Button*/}
+                    <div className="col text-left">
+                        <button type="button" className="btn button-primary" onClick={searchQuery}> Search </button>
+                    </div>
+
                 </div>
+            )}
 
-                {/*Button*/}
-                <div className="col text-left">
-                    <button type="button" className="btn button-primary" onClick={searchQuery}> Search </button>
-                </div>
-
-                {/*To go back to Region Page*/}
-                <div className="col text-right">
-                    <Link to={"/Region"} type="button" className="btn button-primary"> Go Back - View Regions</Link>
-                </div>
-
+            {/*To go back to Region Page*/}
+            <div className="col text-right">
+                <Link to={"/Region"} type="button" className="btn button-primary"> Go Back - View Regions</Link>
             </div>
 
-            {/*//TODO*/}
+            {/*Middle Card*/}
             <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center',justifyContent: 'center',height: '100%' }}>
 
                 <div className="d-flex flex-column align-items-center justify-content-center">
