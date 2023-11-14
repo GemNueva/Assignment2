@@ -13,7 +13,7 @@ const CityCard = ({ cityID, cityName, airQualityYearRange, recordCount}) => {
 
             <p className="card-text">Record Count:{recordCount}</p>
 
-            {/*Link to CitiesList*/}
+            {/*Link to CitiesAQD*/}
             
             <Link to={`/CityAQD/${cityID}`} className="stretched-link"> View AQD </Link>
 

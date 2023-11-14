@@ -46,12 +46,11 @@ const CountriesList = ({ }) => {
 
             <h2 className="text-center">
                 In CountriesList:
-            </h2>
-
-         
+            </h2> 
 
             {/* Ass Spec */}
             {countryData.theRegion.countryCount > 1 && (
+
                 <div className="row justify-content-start mb-3">
 
                     {/*Search Bar*/}

@@ -8,7 +8,7 @@ const CitiesList = () => {
 
     const { countryId } = useParams();
 
-    const [cityList, setState] = useState([]);
+    const [cityList, setCityList] = useState([]);
 
     const [query, setQuery] = useState(''); 
 
